@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import '../providers/library_provider.dart';
 import '../models/document.dart';
 import '../utils/app_theme.dart';
+import '../services/sound_service.dart';
 
 class StatsScreen extends StatefulWidget {
   const StatsScreen({super.key});

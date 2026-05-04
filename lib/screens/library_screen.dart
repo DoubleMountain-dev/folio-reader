@@ -1,6 +1,7 @@
 // lib/screens/library_screen.dart
 // ignore: avoid_web_libraries_in_flutter
 import 'dart:html' as html;
+import '../services/sound_service.dart';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';

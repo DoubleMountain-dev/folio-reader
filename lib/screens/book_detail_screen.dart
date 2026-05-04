@@ -1,6 +1,7 @@
 // lib/screens/book_detail_screen.dart
 // ignore: avoid_web_libraries_in_flutter
 import 'dart:html' as html;
+import '../services/sound_service.dart';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -196,6 +197,7 @@ class BookDetailScreen extends StatelessWidget {
                 _openPdf(context, current);
               } else {
                 context.read<LibraryProvider>().openBook(current.id, current.title);
+                SoundService.instance.playBookOpen();
                 Navigator.push(context,
                     MaterialPageRoute(builder: (_) => TextReaderScreen(book: current)));
               }

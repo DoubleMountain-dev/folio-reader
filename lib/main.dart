@@ -1,13 +1,15 @@
 // lib/main.dart
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'providers/library_provider.dart';
 import 'screens/main_screen.dart';
+import 'services/sound_service.dart';
 import 'utils/app_theme.dart';
 
-void main() {
-  GoogleFonts.config.allowRuntimeFetching = false;
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  // Initialise sound service (loads saved preferences)
+  await SoundService.instance.init();
   runApp(const FolioApp());
 }
 

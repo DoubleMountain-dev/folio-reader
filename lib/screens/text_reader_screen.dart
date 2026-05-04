@@ -10,6 +10,7 @@
 
 // ignore: avoid_web_libraries_in_flutter
 import 'dart:html' as html;
+import '../services/sound_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -159,6 +160,7 @@ class _TextReaderScreenState extends State<TextReaderScreen> {
   }
 
   void _onPageChanged(int page) {
+    SoundService.instance.playPageTurn();
     setState(() => _currentPage = page);
     if (_pages.isNotEmpty && page < _pages.length) {
       final p = _pages[page];
@@ -174,6 +176,7 @@ class _TextReaderScreenState extends State<TextReaderScreen> {
   }
 
   void _saveQuote(String text) {
+    SoundService.instance.playQuoteSave();
     final ch = _pages.isNotEmpty ? _pages[_currentPage] : null;
     context.read<LibraryProvider>().addQuote(widget.book.id, DocQuote(
       id: DateTime.now().millisecondsSinceEpoch.toString(),
@@ -185,6 +188,7 @@ class _TextReaderScreenState extends State<TextReaderScreen> {
   }
 
   void _addBookmark() {
+    SoundService.instance.playBookmarkAdd();
     final ch = _pages.isNotEmpty ? _pages[_currentPage] : null;
     context.read<LibraryProvider>().addBookmark(widget.book.id, DocBookmark(
       id: DateTime.now().millisecondsSinceEpoch.toString(),
@@ -306,7 +310,36 @@ class _TextReaderScreenState extends State<TextReaderScreen> {
           ),
         ),
 
-        // ── Bottom bar (page number + progress) ───────────────────────────────
+        // ── Corner pill badge (variant 3) ─────────────────────────────────────
+        // Always visible, no tap required — subtle pill in bottom-right corner
+        if (_pages.isNotEmpty)
+          Positioned(
+            bottom: 12,
+            right: 14,
+            child: AnimatedOpacity(
+              duration: const Duration(milliseconds: 200),
+              opacity: _showBars ? 0.0 : 1.0,
+              child: IgnorePointer(
+                ignoring: _showBars,
+                child: Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 4),
+                  decoration: BoxDecoration(
+                    color: fg.withValues(alpha: 0.10),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Text(
+                    '${_currentPage + 1} / $total',
+                    style: GoogleFonts.dmSans(
+                      fontSize: 11,
+                      color: fg.withValues(alpha: 0.50),
+                      letterSpacing: 0.3,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        // When bars are shown — keep progress bar in bottom bar
         AnimatedPositioned(
           duration: const Duration(milliseconds: 200),
           bottom: _showBars ? 0 : -60, left: 0, right: 0,

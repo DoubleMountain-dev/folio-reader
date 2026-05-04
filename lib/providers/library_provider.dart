@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../models/document.dart';
 import '../parsers/document_loader.dart';
+import '../services/sound_service.dart';
 
 enum SortOrder { dateAdded, lastOpened, title, author, progress }
 
