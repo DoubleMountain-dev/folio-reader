@@ -5,7 +5,7 @@
 **A cross-platform e-book reader built with Flutter — runs in the browser and on Android.**
 
 [![Live Demo](https://img.shields.io/badge/Live_Demo-Try_Now-C0392B?style=for-the-badge)](https://DoubleMountain-dev.github.io/folio-reader/)
-[![Landing Page](https://img.shields.io/badge/Landing_Page-Visit-2C1810?style=for-the-badge)](https://DoubleMountain-dev.github.io/folio/)
+[![Landing Page](https://img.shields.io/badge/Landing_Page-Visit-2C1810?style=for-the-badge)](https://doublemountain-dev.github.io/FolioLanding/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
 </div>
