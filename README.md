@@ -153,13 +153,7 @@ folio_reader/
 
 ---
 
-## Limitations
 
-- **MOBI / AZW3 / DJVU** are not supported. These formats require native C/C++ libraries (libmobi, DjVuLibre) which cannot run in a browser. Users should convert these to EPUB using [Calibre](https://calibre-ebook.com/) before importing.
-- **Library is local to each device** — no cloud sync. Use export/import (JSON backup) to transfer between devices.
-- **Dictionary and Wikipedia features require an internet connection.**
-
----
 
 ## License
 
